@@ -34,7 +34,7 @@ VISUALIZATIONS = {
     "charm": ["Absolute Charm Exposure", "Charm Exposure Profile"],
 }
 PLOT_DIR = "plots"
-TZ = "Europe/Madrid"  # CEST timezone
+TZ = "America/New_York"  # CEST timezone
 DISCORD_CHANNEL_IDS = {
     "^SPX/0dte/delta": 1387377585427841094,  # Replace with actual channel IDs
     "^SPX/0dte/gamma": 1387376148950028288,
@@ -146,7 +146,7 @@ def analyze_data(ticker, expir):
         ticker,
         expir,
         is_json=True,
-        tz="Europe/Madrid",
+        tz="America/New_York",
     )
     return result if result else (None,) * 16
 
