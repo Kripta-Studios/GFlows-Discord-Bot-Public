@@ -169,7 +169,10 @@ async def generate_plots(specific_ticker=None, specific_exp=None, specific_greek
         for exp in expirations:
             if exp == "1dte":
                 today = datetime.now(ZoneInfo(TZ)).date()
-                tomorrow = today + timedelta(days=1)
+                if "Fri" in datetime.now(ZoneInfo("America/New_York")).ctime():
+                    tomorrow = today + timedelta(days=3)
+                else:
+                    tomorrow = today + timedelta(days=1)
                 expir_param = tomorrow.strftime("%Y-%m-%d")
             else:
                 expir_param = exp
