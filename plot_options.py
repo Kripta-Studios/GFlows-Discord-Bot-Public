@@ -353,7 +353,10 @@ async def generate_plots(specific_ticker=None, specific_exp=None, specific_greek
                         plt.ylabel(y_title)
                         plt.legend()
                         today = datetime.now(ZoneInfo(TZ)).date()
-                        tomorrow = today + timedelta(days=1)
+                        if "Fri" in datetime.now(ZoneInfo("America/New_York")).ctime():
+                            tomorrow = today + timedelta(days=3)
+                        else:
+                            tomorrow = today + timedelta(days=1)
                         date_formats = {
                             "monthly": monthly_options_dates[0].strftime("%Y %b") if monthly_options_dates else "N/A",
                             "opex": monthly_options_dates[1].strftime("%Y %b %d") if len(monthly_options_dates) > 1 else "N/A",
